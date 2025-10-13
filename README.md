@@ -82,16 +82,8 @@ Content-Type: application/json
 ## Demo video 
 
 
-<p align="center">
-  <video src="Demo Video.mp4" controls width="720">
-    Your browser does not support the video tag.
-  </video>
-</p>
 
-<!-- Optional fallback link -->
-<p align="center">
-  <a href="Demo Video.mp4">Download / Watch the demo (MP4)</a>
-</p>
+[![Watch the demo](./demo/thumbnail.png)](https://youtu.be/Y23PoOnok5E)
 
 ## Testing
 
