@@ -91,7 +91,7 @@ Content-Type: application/json
 pytest -q
 ```
 
-## Notes
+## Disclaimer
 
 * Do not rely on this for medical decisions.
 
