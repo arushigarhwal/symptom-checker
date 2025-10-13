@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History • Symptom Checker</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">Symptom Checker</div>
+      <nav>
+        <a href="/">Home</a>
+        <a class="active" href="/history">History</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h1>Recent analyses</h1>
+        <table class="table">
+          <thead><tr><th>ID</th><th>Time (UTC)</th><th>Symptoms</th></tr></thead>
+          <tbody>
+          {% for id, ts, symptoms in rows %}
+            <tr>
+              <td><a href="/history/{{ id }}">{{ id }}</a></td>
+              <td>{{ ts }}</td>
+              <td class="truncate">{{ symptoms }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="3" class="muted">No entries yet.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <small>Educational demo • Not medical advice</small>
+    </footer>
+  </div>
+</body>
+</html>

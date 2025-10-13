@@ -1,0 +1,43 @@
+# Python cache/build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.build/
+dist/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Test/cache
+.pytest_cache/
+coverage/
+htmlcov/
+
+# Local data & uploads
+symptom_history.db
+uploads/
+data/
+
+# Environment & secrets
+.env
+*.env
+
+# Logs
+*.log
+
+# Windows shell history files (optional)
+*.ps1History

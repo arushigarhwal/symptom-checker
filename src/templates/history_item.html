@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History item • Symptom Checker</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">Symptom Checker</div>
+      <nav>
+        <a href="/">Home</a>
+        <a class="active" href="/history">History</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% else %}
+          <h1>Result from {{ ts }}</h1>
+          <pre class="json">{{ response_json }}</pre>
+          <p class="muted">Original symptoms:</p>
+          <pre>{{ symptoms }}</pre>
+        {% endif %}
+      </section>
+    </main>
+
+    <footer>
+      <small>Educational demo • Not medical advice</small>
+    </footer>
+  </div>
+</body>
+</html>

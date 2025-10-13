@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Symptom Checker • Educational</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <div class="brand">Symptom Checker</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h1>Describe your symptoms</h1>
+        <p class="muted">This tool provides educational information only. It is not a diagnosis.</p>
+        <form method="POST" action="/analyze" class="form">
+          <label for="symptoms">Symptoms</label>
+          <textarea id="symptoms" name="symptoms" rows="6" placeholder="e.g., Fever for 2 days, dry cough, sore throat" required></textarea>
+
+          <div class="grid">
+            <div>
+              <label for="age">Age (optional)</label>
+              <input id="age" name="age" type="number" min="0" max="120" placeholder="e.g., 32" />
+            </div>
+            <div>
+              <label for="duration_days">Duration in days (optional)</label>
+              <input id="duration_days" name="duration_days" type="number" min="0" max="365" placeholder="e.g., 3" />
+            </div>
+          </div>
+
+          <button type="submit">Analyze</button>
+        </form>
+      </section>
+
+      {% if error %}
+      <section class="card error">{{ error }}</section>
+      {% endif %}
+
+      {% if result %}
+      <section class="card">
+        <h2>Possible conditions</h2>
+        <ul class="list">
+          {% for c in result.conditions %}
+          <li>
+            <div class="row">
+              <div class="name">{{ c.name }}</div>
+              <div class="note">{{ c.likelihood_note }}</div>
+            </div>
+            {% if c.evidence %}
+            <ul class="evidence">
+              {% for e in c.evidence %}<li>{{ e }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+
+        <h2>Recommended next steps</h2>
+        <ul class="list">
+          {% for s in result.next_steps %}<li>{{ s }}</li>{% endfor %}
+        </ul>
+
+        {% if result.red_flags %}
+        <h2 class="red">Red flags</h2>
+        <ul class="list red">
+          {% for r in result.red_flags %}<li>⚠️ {{ r }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+
+        <p class="disclaimer">{{ result.disclaimer }}</p>
+      </section>
+
+      <section class="card muted">
+        <h3>Input preview</h3>
+        <pre>{{ masked_input }}</pre>
+      </section>
+      {% endif %}
+    </main>
+
+    <footer>
+      <small>© 2025 Symptom Checker • Educational demo • No medical advice</small>
+    </footer>
+  </div>
+</body>
+</html>
