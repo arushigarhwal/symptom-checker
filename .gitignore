@@ -1,4 +1,3 @@
-# Python cache/build
 __pycache__/
 *.pyc
 *.pyo
@@ -8,13 +7,11 @@ __pycache__/
 dist/
 .eggs/
 
-# Virtual environments
 .venv/
 venv/
 ENV/
 env/
 
-# OS/editor junk
 .DS_Store
 Thumbs.db
 *.swp
@@ -22,22 +19,18 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Test/cache
 .pytest_cache/
 coverage/
 htmlcov/
 
-# Local data & uploads
 symptom_history.db
 uploads/
 data/
 
-# Environment & secrets
 .env
 *.env
 
-# Logs
 *.log
 
-# Windows shell history files (optional)
 *.ps1History
+.env.example
